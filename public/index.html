@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Music - The HTML Project</title>
+
+  <link rel="icon" href="https://assets.thehtmlproject.com/icon.jpeg" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300..900;1,300..900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+  <script defer src="https://assets.thehtmlproject.com/script/analytics/script.js" data-ga-id="G-4VCCFETV10"></script>
+
+  <script defer src="https://assets.thehtmlproject.com/script/theme.js"></script>
+  <meta name="color-scheme" content="light dark" />
+
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=()" />
+
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+
+  <div class="body-ambient" id="bodyAmbient"></div>
+
+  <nav class="top-nav" aria-label="Music navigation">
+    <button class="top-nav-btn active" data-tab="player" type="button">
+      <span class="material-symbols-outlined">play_circle</span>
+      <span class="top-nav-label">Player</span>
+    </button>
+    <button class="top-nav-btn" data-tab="search" type="button">
+      <span class="material-symbols-outlined">search</span>
+      <span class="top-nav-label">Search</span>
+    </button>
+    <button class="top-nav-btn" data-tab="lyrics" type="button">
+      <span class="material-symbols-outlined">lyrics</span>
+      <span class="top-nav-label">Lyrics</span>
+    </button>
+    <button class="top-nav-btn" data-tab="favorites" type="button">
+      <span class="material-symbols-outlined">favorite</span>
+      <span class="top-nav-label">Favorites</span>
+    </button>
+  </nav>
+
+  <main class="container">
+
+    <section class="tab-content active player-layout" id="playerTab" aria-label="Player">
+      <div class="album-art" id="albumArtContainer">
+        <span class="material-symbols-outlined album-icon">music_note</span>
+      </div>
+
+      <div class="song-info">
+        <h2 id="songTitle">No Song Selected</h2>
+        <p id="artistName">Search for a song to play</p>
+        <div id="statusText"></div>
+      </div>
+
+      <audio id="audioPlayer" crossorigin="anonymous"></audio>
+
+      <div class="controls" aria-label="Playback controls">
+        <button class="control-btn" id="favBtn" type="button" aria-label="Favorite">
+          <span class="material-symbols-outlined" id="favIcon">favorite_border</span>
+        </button>
+        <button class="control-btn" id="prevBtn" type="button" aria-label="Previous">
+          <span class="material-symbols-outlined">skip_previous</span>
+        </button>
+        <button class="control-btn play-pause" id="playBtn" type="button" aria-label="Play">
+          <span class="material-symbols-outlined" id="playIcon">play_arrow</span>
+        </button>
+        <button class="control-btn" id="nextBtn" type="button" aria-label="Next">
+          <span class="material-symbols-outlined">skip_next</span>
+        </button>
+      </div>
+
+      <div class="player-bottom">
+        <div class="progress-bar" id="progressBar" aria-label="Progress">
+          <div class="progress" id="progress"></div>
+          <div class="progress-thumb" id="progressThumb" aria-hidden="true"></div>
+        </div>
+
+        <div class="time-info">
+          <span id="currentTime">0:00</span>
+          <span id="duration">0:00</span>
+        </div>
+
+        <div class="volume-control" aria-label="Volume">
+          <button class="volume-btn" id="muteBtn" type="button" aria-label="Mute">
+            <span class="material-symbols-outlined" id="muteIcon">volume_up</span>
+          </button>
+          <input type="range" min="0" max="100" value="70" id="volumeSlider" aria-label="Volume slider">
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-content" id="searchTab" aria-label="Search">
+      <div class="search-panel">
+        <div class="search-bar">
+          <input id="searchInput" type="text" placeholder="Search songs..." autocomplete="off" inputmode="search">
+          <button id="searchBtn" type="button" aria-label="Search">
+            <span class="material-symbols-outlined">search</span>
+          </button>
+        </div>
+
+        <div class="search-loading" id="searchLoading" aria-live="polite">
+          <span class="material-symbols-outlined spin">progress_activity</span>
+          <span>Searching…</span>
+        </div>
+
+        <div class="results-list scrollable" id="searchResults" aria-label="Search results"></div>
+      </div>
+    </section>
+
+    <section class="tab-content" id="lyricsTab" aria-label="Lyrics">
+      <div class="lyrics-container" id="lyricsContainer">No lyrics available for this track</div>
+    </section>
+
+    <section class="tab-content" id="favoritesTab" aria-label="Favorites">
+      <div class="favorites-container scrollable" id="favoritesResults">No favorites yet</div>
+    </section>
+
+  </main>
+
+  <script src="/assets/script.js" defer></script>
+</body>
+</html>
