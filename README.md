@@ -15,8 +15,10 @@
 
 Step 1 - Clone Repo and cd into the directory
 `git clone https://github.com/TheHTMLProject/music.git && cd music`
+
 Step 2 - Begin npm install
 `npm install`
+
 Step 3 - Run script to test. The default port is 3333, you can change this in server.js
 `npm run start`
 
